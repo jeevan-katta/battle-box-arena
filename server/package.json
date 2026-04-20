@@ -21,9 +21,8 @@
     "mongoose": "^8.3.2",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3",
-    "razorpay": "^2.9.4"
-  },
-  "devDependencies": {
+    "razorpay": "^2.9.4",
+    "typescript": "^5.4.5",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
@@ -31,8 +30,9 @@
     "@types/jsonwebtoken": "^9.0.6",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.12.7",
-    "@types/node-cron": "^3.0.11",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.4.5"
+    "@types/node-cron": "^3.0.11"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
   }
 }

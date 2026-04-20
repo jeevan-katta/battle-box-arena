@@ -71,7 +71,17 @@ cron.schedule('* * * * *', async () => {
   }
 });
 
-connectDB().then(() => {
+// Database connection & Auto-seed
+connectDB().then(async () => {
+  // Check if we need to seed the admin
+  const { Admin } = await import('./models/Admin');
+  const adminCount = await Admin.countDocuments();
+  if (adminCount === 0) {
+    console.log('🌱 No admin found. Seeding initial data...');
+    const { seedData } = await import('./seed');
+    await seedData().catch(err => console.error('Seed failed:', err));
+  }
+
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
   });

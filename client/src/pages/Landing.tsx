@@ -56,10 +56,14 @@ export default function LandingPage() {
     login(`+91${phone.replace(/\D/g, '')}`, {
       onSuccess: (data) => {
         setUser(data.user, data.token);
-        toast.success(`Welcome, ${name || 'Champion'}! 🏟️`);
+        toast.success(`Welcome, ${name || data.user.name || 'Champion'}! 🏟️`);
         navigate('/home');
       },
-      onError: () => toast.error('Access denied. Please check your number.'),
+      onError: (err: any) => {
+        console.error('Login error:', err);
+        const msg = err.response?.data?.message || 'Access denied. Please check your connection.';
+        toast.error(msg);
+      },
     });
   };
 

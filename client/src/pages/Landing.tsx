@@ -221,86 +221,89 @@ export default function LandingPage() {
                   />
                 </div>
 
-                {phone.replace(/\D/g, '').length === 10 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, y: 10 }}
-                    animate={{ opacity: 1, height: 'auto', y: 0 }}
-                    style={{ display: 'flex', flexDirection: 'column', gap: 24, overflow: 'hidden' }}
-                  >
-                    <div style={{ position: 'relative' }}>
-                      <div style={{ position: 'absolute', left: 20, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.3)', transition: 'color 0.3s' }}>
-                        <User size={20} />
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Full Name (Optional)"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        style={{ 
-                          width: '100%', 
-                          height: 68, 
-                          background: 'rgba(255,255,255,0.03)', 
-                          border: '1px solid rgba(255,255,255,0.1)', 
-                          borderRadius: 22, 
-                          padding: '0 24px 0 60px', 
-                          color: '#fff', 
-                          fontSize: 17, 
-                          outline: 'none', 
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                          fontFamily: 'inherit'
-                        }}
-                        onFocus={(e) => {
-                          e.target.style.borderColor = '#E11D48';
-                          e.target.style.background = 'rgba(225, 29, 72, 0.05)';
-                        }}
-                        onBlur={(e) => {
-                          e.target.style.borderColor = 'rgba(255,255,255,0.1)';
-                          e.target.style.background = 'rgba(255,255,255,0.03)';
-                        }}
-                      />
-                    </div>
-
-                    <motion.button
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      type="submit"
-                      disabled={isPending}
-                      style={{
-                        height: 68,
-                        background: 'linear-gradient(135deg, #E11D48 0%, #BE123C 100%)',
-                        color: '#fff',
-                        fontWeight: 800,
-                        borderRadius: 22,
-                        border: 'none',
-                        fontSize: 18,
-                        cursor: 'pointer',
-                        letterSpacing: '0.05em',
-                        boxShadow: '0 20px 40px rgba(225, 29, 72, 0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: 12,
-                        position: 'relative',
-                        overflow: 'hidden'
-                      }}
+                <AnimatePresence>
+                  {phone.replace(/\D/g, '').length === 10 && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0, y: 10 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: 10 }}
+                      style={{ display: 'flex', flexDirection: 'column', gap: 24, overflow: 'hidden' }}
                     >
-                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(255,255,255,0.1), transparent)', opacity: 0.5 }} />
-                      {isPending ? (
-                        <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                          <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
-                            <Zap size={20} fill="#fff" />
-                          </motion.div>
-                          SECURE LOGIN...
-                        </span>
-                      ) : (
-                        <>
-                          <span>GO TO ARENA</span>
-                          <ChevronRight size={20} />
-                        </>
-                      )}
-                    </motion.button>
-                  </motion.div>
-                )}
+                      <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'absolute', left: 20, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.3)', transition: 'color 0.3s' }}>
+                          <User size={20} />
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Full Name (Optional)"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          style={{ 
+                            width: '100%', 
+                            height: 68, 
+                            background: 'rgba(255,255,255,0.03)', 
+                            border: '1px solid rgba(255,255,255,0.1)', 
+                            borderRadius: 22, 
+                            padding: '0 24px 0 60px', 
+                            color: '#fff', 
+                            fontSize: 17, 
+                            outline: 'none', 
+                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                            fontFamily: 'inherit'
+                          }}
+                          onFocus={(e) => {
+                            e.target.style.borderColor = '#E11D48';
+                            e.target.style.background = 'rgba(225, 29, 72, 0.05)';
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.borderColor = 'rgba(255,255,255,0.1)';
+                            e.target.style.background = 'rgba(255,255,255,0.03)';
+                          }}
+                        />
+                      </div>
+
+                      <motion.button
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        type="submit"
+                        disabled={isPending}
+                        style={{
+                          height: 68,
+                          background: 'linear-gradient(135deg, #E11D48 0%, #BE123C 100%)',
+                          color: '#fff',
+                          fontWeight: 800,
+                          borderRadius: 22,
+                          border: 'none',
+                          fontSize: 18,
+                          cursor: 'pointer',
+                          letterSpacing: '0.05em',
+                          boxShadow: '0 20px 40px rgba(225, 29, 72, 0.3)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          gap: 12,
+                          position: 'relative',
+                          overflow: 'hidden'
+                        }}
+                      >
+                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(255,255,255,0.1), transparent)', opacity: 0.5 }} />
+                        {isPending ? (
+                          <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
+                              <Zap size={20} fill="#fff" />
+                            </motion.div>
+                            SECURE LOGIN...
+                          </span>
+                        ) : (
+                          <>
+                            <span>GO TO ARENA</span>
+                            <ChevronRight size={20} />
+                          </>
+                        )}
+                      </motion.button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </form>
 
               <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: 'rgba(255,255,255,0.3)', fontSize: 13 }}>

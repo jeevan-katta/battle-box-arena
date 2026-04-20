@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// Remove trailing /api if it exists to prevent duplicate /api/api routes
+const CLEAN_API_URL = API_URL.replace(/\/api$/, '');
 
 export const api = axios.create({
-  baseURL: `${API_URL}/api`,
+  baseURL: `${CLEAN_API_URL}/api`,
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
@@ -30,7 +32,7 @@ api.interceptors.response.use(
 );
 
 export const adminApi = axios.create({
-  baseURL: `${API_URL}/api`,
+  baseURL: `${CLEAN_API_URL}/api`,
   withCredentials: true,
   headers: { 'Content-Type': 'application/json' },
 });
